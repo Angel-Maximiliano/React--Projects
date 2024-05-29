@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+
+body{
+  font-family: 'Krona One', sans-serif;
+}
+
 .Fondo{
     margin-top: -10px;
     width: 100%;
@@ -5,3 +11,83 @@
     max-height: 1040px;
     background-color: black;
 }
+
+.fade-in-out {
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .fade-in-out.hidden {
+    opacity: 0;
+  }
+  
+
+.slick-prev, .slick-next {
+  color: white;
+  z-index: 1;
+}
+
+.slick-dots li button:before {
+  color: white;
+}
+
+.swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+}
+
+/* src/ImageSlider.css */
+.slider-item {
+  position: relative;
+}
+
+.slider-image {
+  width: 100%;
+  height: 100vh; /* Full screen height */
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%; /* Cover half of the image */
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+
+.overlay-content {
+  padding: 20px;
+}
+
+.logo {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.message {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    width: 100%; /* Cover entire image on smaller screens */
+  }
+}
+

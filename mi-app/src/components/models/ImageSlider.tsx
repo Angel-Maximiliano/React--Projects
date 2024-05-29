@@ -1,185 +1,117 @@
 import React from 'react';
-import { Box, Card, CardMedia, useMediaQuery, useTheme } from '@mui/material';
+import Slider from 'react-slick';
+import styled from 'styled-components';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
-import OneShot from '../images/descarga.jpg';
-import Nier from '../images/Nier.jpg';
-import Halo from '../images/Halo.jpg';
+import OneShot from '../images/OneShot-Slider.jpg'
+import Nier from '../images/Nier-Slider.jpg'
+import Halo from '../images/Halo-Slider.jpg'
+import OneShot_Title from '../images/OneShot-Title.png'
+import Halo_Title from '../images/Halo-Title.png'
+import Nier_Title from '../images/Nier-Title.png'
 
-const ImageSlider= () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+const SliderWrapper = styled.div`
+  .slick-slide {
+    perspective: 1000px;
+  }
+
+  .slick-list {
+    overflow: hidden;
+  }
+
+  .slick-track {
+    display: flex;
+    align-items: center;
+  }
+
+  .slick-slide div {
+    transform-style: preserve-3d;
+  }
+
+  .slider-image {
+    position: relative;
+    margin: 0 0 0 200px;
+    width: 70%;
+    height: 500px; /* Puedes ajustar la altura según tu necesidad */
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .slider-image {
+      height: 300px;
+    }
+  }
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 200px;
+  height: 92%;
+  width: 50%;
+  background: linear-gradient(to right, black, transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  color: white;
+`;
+
+const Logo = styled.img`
+  width: 300px;
+  height: auto;
+  margin: 40px auto 0 20px;
+`;
+
+const Description = styled.div`
+  margin: 0 auto 100px 20px;
+  text-align: center;
+  width: 50%;
+`;
+
+const ImageSlider = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+  };
+
+  const images = [
+    {
+      src: OneShot,
+      logo: OneShot_Title,
+      description: "OneShot - Nuevo lanzamiento: Acompaña a Niko en una aventura única.",
+    },
+    {
+      src: Nier, // Reemplaza con la ruta a la imagen de Nier Automata
+      logo: Nier_Title, // Reemplaza con la ruta al logo de Nier Automata
+      description: "Nier Automata - Descuento: ¡50% de descuento en este aclamado RPG!",
+    },
+    {
+      src: Halo, // Reemplaza con la ruta a la imagen de Halo Infinite
+      logo: Halo_Title, // Reemplaza con la ruta al logo de Halo Infinite
+      description: "Halo Infinite - Actualización: Nuevos mapas y armas disponibles.",
+    },
+  ];
 
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      height="100vh"
-      width="100%"
-      flexDirection={isMobile ? 'column' : 'row'}
-    >
-      {!isMobile && (
-        <Card
-          sx={{
-            width: '25%',
-            height: '200px',
-            marginRight: 50,
-            boxShadow: 3,
-          }}
-        >
-          <CardMedia
-            component="img"
-            image={OneShot}
-            alt="Left Image"
-            sx={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center',
-            }}
-          />
-        </Card>
-      )}
-
-<Card
-  sx={{
-    width: isMobile ? '80%' : '50%',
-    height: '400px',
-    boxShadow: 3,
-    position: 'absolute',
-  }}
->
-  {/* Agrega el degradado */}
-  <div
-    style={{
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '80%',
-      height: '100%',
-      background: 'linear-gradient(to right, rgba(0, 0, 0, 1))',
-    }}
-  ></div>
-  
-  {/* Logo del juego*/}
-  <div
-    style={{
-      position: 'absolute',
-      top: 10,
-      left: 10,
-    }}
-  >
-    <img
-      src='ruta-al-logo-del-juego.png'
-      alt='Logo del juego'
-      style={{
-        width: 50,
-        height: 'auto',
-      }}
-    />
-  </div>
-  
-  {/* Descripción del juego */}
-  <div
-    style={{
-      position: 'absolute',
-      bottom: 10,
-      left: 10, 
-      color: 'white',
-    }}
-  >
-    Descripción del juego
-  </div>
-  
-  {/* La imagen de fondo */}
-  <CardMedia
-    component="img"
-    image={Nier}
-    alt="Central Image"
-    sx={{
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-      objectPosition: 'center',
-    }}
-  />
-</Card>
-
-      {!isMobile && (
-        <Card
-          sx={{
-            width: '25%',
-            height: '200px',
-            marginLeft: 2,
-            boxShadow: 3,
-          }}
-        >
-          <CardMedia
-            component="img"
-            image={Halo}
-            alt="Right Image"
-            sx={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center',
-            }}
-          />
-        </Card>
-      )}
-
-      {isMobile && (
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          flexDirection="column"
-          width="100%"
-          marginTop={2}
-        >
-          <Card
-            sx={{
-              width: '80%',
-              height: '200px',
-              marginBottom: 2,
-              boxShadow: 3,
-            }}
-          >
-            <CardMedia
-              component="img"
-              image={OneShot}
-              alt="Left Image"
-              sx={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center',
-              }}
-            />
-          </Card>
-
-          <Card
-            sx={{
-              width: '80%',
-              height: '200px',
-              boxShadow: 3,
-            }}
-          >
-            <CardMedia
-              component="img"
-              image={Halo}
-              alt="Right Image"
-              sx={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center',
-              }}
-            />
-          </Card>
-        </Box>
-      )}
-    </Box>
+    <SliderWrapper>
+      <Slider {...settings}>
+        {images.map((image, index) => (
+          <div key={index}>
+            <img src={image.src} alt={`Slide ${index}`} className="slider-image" />
+            <Overlay>
+              <Logo src={image.logo} alt="Game Logo" />
+              <Description>{image.description}</Description>
+            </Overlay>
+          </div>
+        ))}
+      </Slider>
+    </SliderWrapper>
   );
 };
 

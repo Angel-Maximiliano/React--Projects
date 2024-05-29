@@ -111,7 +111,7 @@ function ResponsiveAppBar() {
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              fontFamily: 'Krona One, sans-serif',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
@@ -153,7 +153,7 @@ function ResponsiveAppBar() {
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: 'Krona One, sans-serif',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
@@ -211,7 +211,7 @@ function ResponsiveAppBar() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Typography textAlign="center" sx={{fontFamily: 'Krona One, sans-serif',}}>{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>

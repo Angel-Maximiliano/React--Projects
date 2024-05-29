@@ -126,6 +126,7 @@ const Presentation = () => {
         sx={{
           color: 'white',
           fontSize: '50px',
+          fontFamily: 'Krona One, sans-serif',
         }}
       >
         Nightshade
